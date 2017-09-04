@@ -25,8 +25,8 @@ public class Article extends BaseEntity{
     @GeneratedValue
     @Column(name = "id")
     private String id;
-    @Column(name = "userid")
-    private String userId;
+/*    @Column(name = "userid")
+    private String userId;*/
     @Column(name = "title")
     private String title;
     @Column(name = "content")
@@ -49,10 +49,10 @@ public class Article extends BaseEntity{
     @Column(name = "upduserid")
     private String updUserId;
 
-//    @JsonIgnore
-//    @ManyToOne(targetEntity = User.class)
-//    @JoinColumn(name = "userid",referencedColumnName = "id",insertable = false,updatable = false)
-  //  private User user;
+    @JsonIgnore
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "userid",referencedColumnName = "id")
+    private User user;
 
     public String getId() {
         return id;
@@ -62,13 +62,13 @@ public class Article extends BaseEntity{
         this.id = id;
     }
 
-    public String getUserId() {
+ /*   public String getUserId() {
         return userId;
     }
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
+    }*/
 
     public String getTitle() {
         return title;
@@ -126,13 +126,13 @@ public class Article extends BaseEntity{
         this.updUserId = updUserId;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public int hashCode() {
@@ -149,11 +149,11 @@ public class Article extends BaseEntity{
         return id != null ? id.equals(article.id) : article.id == null;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         String str = "{id=" + id + ",userId="+userId+",title="+title+",content="+content+
                 ",delFlag="+delFlag+",addTime="+addTime+",addUserId="+addUserId
                 +",updTime="+updTime+",updUserId="+updUserId+"}\n";
         return str;
-    }
+    }*/
 }

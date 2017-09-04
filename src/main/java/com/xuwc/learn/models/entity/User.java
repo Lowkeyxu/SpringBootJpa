@@ -60,8 +60,10 @@ public class User extends BaseEntity {
     private String updUserId;
 
 //    @JsonIgnore
-//    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Article.class)
-//    private List<Article> articleList = new ArrayList<Article>();
+//    @ManyToOne(targetEntity = Article.class)
+//    @JoinColumn(name = "userid")
+    @Transient
+    private List<Article> articleList = new ArrayList<Article>();
 
 
     public String getId() {
@@ -144,13 +146,13 @@ public class User extends BaseEntity {
         this.updUserId = updUserId;
     }
 
-//    public List<Article> getArticleList() {
-//        return articleList;
-//    }
-//
-//    public void setArticleList(List<Article> articleList) {
-//        this.articleList = articleList;
-//    }
+    public List<Article> getArticleList() {
+        return articleList;
+    }
+
+    public void setArticleList(List<Article> articleList) {
+        this.articleList = articleList;
+    }
 
     @Override
     public int hashCode() {

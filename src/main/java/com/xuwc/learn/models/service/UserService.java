@@ -21,11 +21,11 @@ public interface UserService {
     //获取所有用户
     List<User> getAll();
     //查询按照方法名
-    User findByUserName(String userName);
+    List<User> findByUserName(String userName);
     //按照性别查询
-    User findBySex(String sex);
+    List<User> findBySex(String sex);
     //测试用户名和性别查询
-    User findByUserNameAndSex(String userName,String sex);
+    List<User> findByUserNameAndSex(String userName,String sex);
     //多表查询
     List<Article> queryAllByUserId(String userId);
 

@@ -7,6 +7,7 @@ package com.xuwc.learn.models.service.impl;
 
 import com.xuwc.learn.models.entity.Article;
 import com.xuwc.learn.models.entity.User;
+import com.xuwc.learn.models.repository.ArticleRepository;
 import com.xuwc.learn.models.repository.UserRepository;
 import com.xuwc.learn.models.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class UserServiceImpl implements UserService {
     // 用户 repository
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ArticleRepository articleRepository;
 
     /**
      * 获取用户信息
@@ -53,7 +57,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public User findByUserName(String userName) {
+    public List<User> findByUserName(String userName) {
         return userRepository.findByUserName(userName);
     }
 
@@ -63,7 +67,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public User findBySex(String sex) {
+    public List<User> findBySex(String sex) {
         return userRepository.findBySex(sex);
     }
 
@@ -74,7 +78,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public User findByUserNameAndSex(String userName, String sex) {
+    public List<User> findByUserNameAndSex(String userName, String sex) {
         return userRepository.findByUserNameAndSex(userName, sex);
     }
 
@@ -85,6 +89,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<Article> queryAllByUserId(String userId) {
-        return userRepository.queryAllByUserId(userId);
+        return articleRepository.queryAllByUserId(userId);
     }
 }
