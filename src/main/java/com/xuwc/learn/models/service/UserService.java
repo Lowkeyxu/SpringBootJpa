@@ -5,6 +5,7 @@
  */
 package com.xuwc.learn.models.service;
 
+import com.xuwc.learn.models.entity.Article;
 import com.xuwc.learn.models.entity.User;
 
 import java.util.List;
@@ -15,8 +16,17 @@ import java.util.List;
  * @since 2017/9/1
  */
 public interface UserService {
-    //获取用户信息
+    //获取用户信息  findById(同理)
     User getUserInfo(String id);
     //获取所有用户
     List<User> getAll();
+    //查询按照方法名
+    User findByUserName(String userName);
+    //按照性别查询
+    User findBySex(String sex);
+    //测试用户名和性别查询
+    User findByUserNameAndSex(String userName,String sex);
+    //多表查询
+    List<Article> queryAllByUserId(String userId);
+
 }

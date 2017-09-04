@@ -28,7 +28,16 @@ public class UserController {
     //首页
     @RequestMapping("")
     public String index(){
+        //测试查询所有
         userService.getAll();
+        //测试用户名查询
+        userService.findByUserName("111");
+        //测试性别查询
+        userService.findBySex("2");
+        //测试用户名加性别查询
+        userService.findByUserNameAndSex("111","2");
+        //多表查询
+        userService.queryAllByUserId("1");
         return "This Is My First JPA Demo!!!";
     }
 

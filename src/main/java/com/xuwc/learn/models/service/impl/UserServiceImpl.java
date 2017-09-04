@@ -5,6 +5,7 @@
  */
 package com.xuwc.learn.models.service.impl;
 
+import com.xuwc.learn.models.entity.Article;
 import com.xuwc.learn.models.entity.User;
 import com.xuwc.learn.models.repository.UserRepository;
 import com.xuwc.learn.models.service.UserService;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Map;
 
 /** 接口实现
  * @author xuwc
@@ -45,5 +45,46 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    /***
+     * 根据用户名查询
+     * @param userName
+     * @return
+     */
+    @Override
+    public User findByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
+
+    /**
+     * 根据性别查询
+     * @param sex
+     * @return
+     */
+    @Override
+    public User findBySex(String sex) {
+        return userRepository.findBySex(sex);
+    }
+
+    /**
+     * 根据用户名和性别查询
+     * @param userName
+     * @param sex
+     * @return
+     */
+    @Override
+    public User findByUserNameAndSex(String userName, String sex) {
+        return userRepository.findByUserNameAndSex(userName, sex);
+    }
+
+    /**
+     * 多表查询
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Article> queryAllByUserId(String userId) {
+        return userRepository.queryAllByUserId(userId);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * @(#) User.java 2017/9/1
+ * @(#) Article.java 2017/9/4
  * 
  * Copyright (c) 2016, SIMPO Technology. All Rights Reserved. SIMPO Technology. CONFIDENTIAL
  */
@@ -7,40 +7,30 @@ package com.xuwc.learn.models.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xuwc.learn.common.base.entity.BaseEntity;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-/** 用户实体类
+/** 用户文章表
  * @author xuwc
  * @version 1.0
- * @since 2017/9/1
+ * @since 2017/9/4
  */
 @Entity
-@Table(name = "sys_user")
-public class User extends BaseEntity {
+@Table(name = "sys_article")
+public class Article extends BaseEntity{
 
-    private static final long serialVersionUID = 6478021448802033208L;
+    private static final long serialVersionUID = 6478021448802036208L;
 
-    //id
     @Id
     @GeneratedValue
     @Column(name = "id")
     private String id;
-    //登录名
-    @Column(name = "loginname")
-    private String loginName;
-    //用户名
-    @Column(name = "username")
-    private String userName;
-    //性别
-    @Column(name = "sex")
-    private String sex;
-    //密码
-    @Column(name = "password")
-    private String password;
+    @Column(name = "userid")
+    private String userId;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "content")
+    private String content;
     //删除标识(0:有效,1:删除)
     @Column(name = "delflag")
     private String delFlag;
@@ -60,9 +50,9 @@ public class User extends BaseEntity {
     private String updUserId;
 
 //    @JsonIgnore
-//    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Article.class)
-//    private List<Article> articleList = new ArrayList<Article>();
-
+//    @ManyToOne(targetEntity = User.class)
+//    @JoinColumn(name = "userid",referencedColumnName = "id",insertable = false,updatable = false)
+  //  private User user;
 
     public String getId() {
         return id;
@@ -72,36 +62,28 @@ public class User extends BaseEntity {
         this.id = id;
     }
 
-    public String getLoginName() {
-        return loginName;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getSex() {
-        return sex;
+    public String getContent() {
+        return content;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getDelFlag() {
@@ -144,12 +126,12 @@ public class User extends BaseEntity {
         this.updUserId = updUserId;
     }
 
-//    public List<Article> getArticleList() {
-//        return articleList;
+//    public User getUser() {
+//        return user;
 //    }
 //
-//    public void setArticleList(List<Article> articleList) {
-//        this.articleList = articleList;
+//    public void setUser(User user) {
+//        this.user = user;
 //    }
 
     @Override
@@ -162,15 +144,15 @@ public class User extends BaseEntity {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
 
-        User user = (User) obj;
+        Article article = (Article) obj;
 
-        return id != null ? id.equals(user.id) : user.id == null;
+        return id != null ? id.equals(article.id) : article.id == null;
     }
 
     @Override
     public String toString() {
-        String str = "{id=" + id + ",loginName="+loginName+",userName="+userName+",sex="+sex+
-                ",password="+password+",delFlag="+delFlag+",addTime="+addTime+",addUserId="+addUserId
+        String str = "{id=" + id + ",userId="+userId+",title="+title+",content="+content+
+                ",delFlag="+delFlag+",addTime="+addTime+",addUserId="+addUserId
                 +",updTime="+updTime+",updUserId="+updUserId+"}\n";
         return str;
     }
