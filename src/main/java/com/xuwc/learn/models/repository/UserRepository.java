@@ -35,4 +35,5 @@ public interface UserRepository extends JpaSpecificationExecutor<User>,JpaReposi
     List<User> findBySex(String sex);
     //测试用户名和性别查询
     List<User> findByUserNameAndSex(String userName,String sex);
+
 }
